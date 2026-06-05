@@ -142,7 +142,7 @@ function HeroMetricCard({ title, value }: { title: string; value: string }) {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function DashboardPage() {
-  const [selectedDistrict, setSelectedDistrict] = useState("Ratnagiri");
+  const [selectedDistrict, setSelectedDistrict] = useState("");
   const [userName, setUserName] = useState("Researcher");
   const [showReport, setShowReport] = useState(false);
   const [mounted, setMounted] = useState(false);
