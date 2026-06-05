@@ -115,26 +115,26 @@ function InsightChip({
 }) {
   return (
     <div
-      className={`rounded-2xl border p-5 group hover:scale-[1.02] hover:-translate-y-0.5 transition-all duration-300 cursor-default ${colorClass}`}
+      className={`group cursor-default rounded-2xl border p-4 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] sm:p-5 ${colorClass}`}
     >
-      <div className="flex items-center justify-between mb-4">
-        <p className="text-xs font-medium uppercase tracking-widest text-current opacity-60">
+      <div className="mb-4 flex items-start justify-between gap-3">
+        <p className="min-w-0 text-xs font-medium uppercase text-current opacity-60">
           {label}
         </p>
-        <Icon size={16} className="opacity-50" />
+        <Icon size={16} className="shrink-0 opacity-50" />
       </div>
-      <p className="text-xl font-bold leading-none">{value}</p>
+      <p className="break-words text-lg font-bold leading-tight sm:text-xl">{value}</p>
     </div>
   );
 }
 
 function HeroMetricCard({ title, value }: { title: string; value: string }) {
   return (
-    <div className="group rounded-2xl border border-white/8 bg-slate-900/50 p-5 hover:border-green-500/25 hover:bg-slate-900/80 hover:scale-[1.03] transition-all duration-300">
-      <p className="text-slate-500 text-xs font-medium uppercase tracking-widest mb-3">
+    <div className="group rounded-2xl border border-white/8 bg-slate-900/50 p-4 transition-all duration-300 hover:scale-[1.03] hover:border-green-500/25 hover:bg-slate-900/80 sm:p-5">
+      <p className="mb-3 text-xs font-medium uppercase text-slate-500">
         {title}
       </p>
-      <h3 className="text-3xl font-bold text-white tabular-nums">{value}</h3>
+      <h3 className="text-2xl font-bold tabular-nums text-white sm:text-3xl">{value}</h3>
     </div>
   );
 }
@@ -237,15 +237,15 @@ probability: "Loading..."
 
   return (
     <DashboardLayout>
-      <div className="space-y-6 text-white" suppressHydrationWarning>
+      <div className="space-y-5 text-white sm:space-y-6" suppressHydrationWarning>
 
         {/* ── Sticky top status bar ─────────────────────────────────────── */}
         {mounted && (
-          <div className="sticky top-0 z-30 pb-2">
-            <div className="flex items-center justify-between px-5 py-3 rounded-2xl border border-white/8 bg-slate-950/80 backdrop-blur-xl shadow-xl shadow-black/30">
-              <div className="flex items-center gap-4">
+          <div className="sticky top-16 z-30 pb-2 sm:top-20">
+            <div className="flex flex-col gap-3 rounded-2xl border border-white/8 bg-slate-950/80 px-4 py-3 shadow-xl shadow-black/30 backdrop-blur-xl sm:flex-row sm:items-center sm:justify-between sm:px-5">
+              <div className="flex min-w-0 flex-wrap items-center gap-3 sm:gap-4">
                 <PulsingDot color="bg-green-400" />
-                <span className="text-green-400 text-sm font-medium flex items-center gap-2">
+                <span className="flex min-w-0 items-center gap-2 text-sm font-medium text-green-400">
                   <Activity size={14} />
                   AI Systems Active
                 </span>
@@ -255,7 +255,7 @@ probability: "Loading..."
                 </div>
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-center justify-between gap-3 sm:justify-end">
                 <Badge variant="success">
                   {isLoading ? "Syncing Districts" : "36 Districts Online"}
                 </Badge>
@@ -279,7 +279,7 @@ probability: "Loading..."
         <CriticalAlerts />
 
         {/* ── Hero ──────────────────────────────────────────────────────── */}
-        <div className="relative overflow-hidden rounded-3xl border border-white/8 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 p-6 xl:p-7">
+        <div className="relative overflow-hidden rounded-2xl border border-white/8 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 p-4 sm:rounded-3xl sm:p-6 xl:p-7">
           {/* Ambient glow */}
           <div className="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full bg-green-500/10 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-16 -left-16 w-72 h-72 rounded-full bg-blue-500/8 blur-3xl" />
@@ -294,13 +294,13 @@ probability: "Loading..."
             }}
           />
 
-          <div className="relative z-10 flex flex-col xl:flex-row xl:items-start gap-10">
+          <div className="relative z-10 flex flex-col gap-7 xl:flex-row xl:items-start xl:gap-10">
 
             {/* Left: Greeting + actions */}
             <div className="flex-1 min-w-0">
 
               {/* District selector */}
-              <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-2xl border border-white/10 bg-slate-800/60">
+              <div className="mb-6 inline-flex max-w-full items-center gap-2 rounded-2xl border border-white/10 bg-slate-800/60 px-4 py-2">
   <Map
     size={15}
     className="text-green-400 shrink-0"
@@ -318,7 +318,7 @@ probability: "Loading..."
     id="district-select"
     value={selectedDistrict}
     onChange={(e) => setSelectedDistrict(e.target.value)}
-    className="bg-transparent text-white text-sm font-medium outline-none cursor-pointer appearance-none pr-5"
+    className="min-w-0 max-w-[13rem] cursor-pointer appearance-none bg-transparent pr-5 text-sm font-medium text-white outline-none sm:max-w-none"
   >
                   {districts.map((d) => (
                     <option key={d.name} value={d.name} className="bg-slate-900">
@@ -331,7 +331,7 @@ probability: "Loading..."
 
               {/* Greeting */}
               {/* Greeting */}
-<h1 className="text-4xl xl:text-5xl 2xl:text-6xl font-bold tracking-tight leading-[1.1] mb-4">
+<h1 className="mb-4 break-words text-3xl font-bold leading-tight tracking-tight sm:text-4xl xl:text-5xl 2xl:text-6xl">
 
   {greeting},{" "}
 
@@ -345,7 +345,7 @@ probability: "Loading..."
 
 </h1>
 
-              <p className="text-slate-400 text-base xl:text-lg leading-relaxed max-w-xl mb-8">
+              <p className="mb-6 max-w-xl text-sm leading-relaxed text-slate-400 sm:mb-8 sm:text-base xl:text-lg">
                 MahaInsight is actively monitoring{" "}
                 <span className="text-slate-300 font-medium">{selectedDistrict}</span> —
                 tracking rainfall, agricultural patterns, and climate risk
@@ -353,10 +353,10 @@ probability: "Loading..."
               </p>
 
               {/* Actions */}
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <button
                   onClick={() => setShowReport(true)}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-green-500 hover:bg-green-400 active:scale-95 transition-all duration-200 font-medium text-sm text-white shadow-lg shadow-green-500/25"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-green-500 px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-green-500/25 transition-all duration-200 hover:bg-green-400 active:scale-95"
                 >
                   <Zap size={15} />
                   Generate AI Report
@@ -378,6 +378,7 @@ probability: "Loading..."
     hover:border-green-500/20
     transition-all duration-300
     font-medium
+    text-sm sm:text-base
   "
 >
 
@@ -388,7 +389,7 @@ probability: "Loading..."
             </div>
 
             {/* Right: mini metric grid */}
-            <div className="grid grid-cols-2 gap-3 xl:min-w-[300px] xl:max-w-[340px] w-full xl:w-auto">
+            <div className="grid w-full grid-cols-2 gap-3 xl:w-auto xl:min-w-[300px] xl:max-w-[340px]">
               {[
                 { title: "Active Districts", value: "36" },
                 { title: "AI Predictions", value: "124" },
@@ -425,7 +426,7 @@ probability: "Loading..."
 )}
 
         {/* ── Stat Cards ───────────────────────────────────────────────── */}
-<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
   <StatCard
     title="Annual Rainfall"
     value={currentData.rainfall}
@@ -462,9 +463,9 @@ probability: "Loading..."
 
         {/* ── AI Insight Chips ──────────────────────────────────────────── */}
         <div className="mt-2">
-          <div className="flex items-center gap-2 mb-5">
+          <div className="mb-5 flex min-w-0 items-center gap-2">
             <TrendingUp size={16} className="text-green-400" />
-            <h2 className="text-sm font-medium text-slate-400">
+            <h2 className="min-w-0 break-words text-sm font-medium text-slate-400">
               AI Risk Analysis — {selectedDistrict}
             </h2>
           </div>
@@ -497,16 +498,16 @@ probability: "Loading..."
         </div>
 
         {/* ── Map + District Analytics (side by side on xl) ─────────────── */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-4">
-          <div className="lg:col-span-2 rounded-3xl border border-white/8 bg-slate-900/50 overflow-hidden">
-            <div className="flex items-center gap-3 px-6 py-4 border-b border-white/6">
+        <div className="mt-4 grid grid-cols-1 gap-5 lg:grid-cols-3 lg:gap-6">
+          <div className="overflow-hidden rounded-2xl border border-white/8 bg-slate-900/50 sm:rounded-3xl lg:col-span-2">
+            <div className="flex flex-wrap items-center gap-3 border-b border-white/6 px-4 py-4 sm:px-6">
               <Map size={16} className="text-green-400" />
               <h2 className="text-sm font-medium text-slate-400">
                 Climate Map
               </h2>
               <Badge variant="success">Live</Badge>
             </div>
-            <div className="h-[450px]">
+            <div className="h-[320px] sm:h-[420px] lg:h-[450px]">
               <ClimateMap
                 selectedDistrict={selectedDistrict}
                 setSelectedDistrict={setSelectedDistrict}
@@ -514,14 +515,14 @@ probability: "Loading..."
             </div>
           </div>
 
-          <div className="rounded-3xl border border-white/8 bg-slate-900/50 overflow-hidden">
-            <div className="flex items-center gap-3 px-6 py-4 border-b border-white/6">
+          <div className="overflow-hidden rounded-2xl border border-white/8 bg-slate-900/50 sm:rounded-3xl">
+            <div className="flex flex-wrap items-center gap-3 border-b border-white/6 px-4 py-4 sm:px-6">
               <BarChart3 size={16} className="text-blue-400" />
               <h2 className="text-sm font-medium text-slate-400">
                 District Analytics
               </h2>
             </div>
-            <div className="p-5 ">
+            <div className="p-4 sm:p-5">
               <div ref={analyticsRef}>
                 <DistrictAnalyticsPanel
                   district={selectedDistrict}
@@ -539,14 +540,14 @@ probability: "Loading..."
         </div>
 
         {/* ── Live Alerts ───────────────────────────────────────────────── */}
-        <div className="rounded-3xl border border-white/8 bg-slate-900/50 overflow-hidden mt-4">
-          <div className="flex items-center gap-3 px-6 py-4 border-b border-white/6">
+        <div className="mt-4 overflow-hidden rounded-2xl border border-white/8 bg-slate-900/50 sm:rounded-3xl">
+          <div className="flex items-center gap-3 border-b border-white/6 px-4 py-4 sm:px-6">
             <PulsingDot color="bg-red-400" />
             <h2 className="text-sm font-medium text-slate-400">
               Live Alerts
             </h2>
           </div>
-          <div className="p-6">
+          <div className="p-4 sm:p-6">
             <LiveAlerts />
           </div>
         </div>

@@ -26,9 +26,9 @@ export default function LiveAlerts() {
   const primaryAlert = alerts[0];
 
   return (
-    <div className="rounded-3xl border border-emerald-500/20 bg-emerald-500/10 p-6 text-white transition-all duration-300 hover:border-emerald-400/30">
-      <div className="mb-4 flex items-center justify-between gap-4">
-        <h2 className="text-2xl font-bold">Live Climate Alert Feed</h2>
+    <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/10 p-4 text-white transition-all duration-300 hover:border-emerald-400/30 sm:rounded-3xl sm:p-6">
+      <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+        <h2 className="text-xl font-bold sm:text-2xl">Live Climate Alert Feed</h2>
         <div className="flex items-center gap-2 text-sm font-semibold text-emerald-300">
           <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
           {isLoading ? "SYNCING" : "LIVE"}
@@ -37,7 +37,7 @@ export default function LiveAlerts() {
 
       {primaryAlert ? (
         <div
-          className={`rounded-2xl border p-5 animate-in fade-in duration-500 ${severityClass[primaryAlert.severity]}`}
+          className={`animate-in rounded-2xl border p-4 duration-500 fade-in sm:p-5 ${severityClass[primaryAlert.severity]}`}
         >
           <div className="mb-3 flex items-center gap-3">
             <AlertTriangle size={18} />
@@ -45,11 +45,11 @@ export default function LiveAlerts() {
               {primaryAlert.severity}
             </p>
           </div>
-          <p className="text-lg font-semibold">
+          <p className="break-words text-base font-semibold sm:text-lg">
             {primaryAlert.title} in {primaryAlert.district}
           </p>
           <p className="mt-2 text-sm text-slate-300">{primaryAlert.detail}</p>
-          <p className="mt-4 text-xs text-slate-400">
+          <p className="mt-4 break-words text-xs text-slate-400">
             {primaryAlert.metric}:{" "}
             <span className="font-semibold text-white">
               {primaryAlert.value?.toFixed(1) ?? "N/A"}
