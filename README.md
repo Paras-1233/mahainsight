@@ -1,36 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MahaInsight
 
-## Getting Started
+MahaInsight is a Next.js application for Maharashtra climate and agriculture insights. It tracks district-level rainfall, weather, crop recommendations, demographics, maps, and alerts.
 
-First, run the development server:
+## Project Folder
+
+Work from this folder:
+
+```bash
+C:\MahaInsight\mahainsight
+```
+
+The outer `C:\MahaInsight` folder is only a container.
+
+## Main Features
+
+- Landing page with overview, capabilities, impact, and getting started sections
+- Dashboard for district climate summaries
+- Rainfall analytics with live and historical data
+- Weather monitoring
+- Crop intelligence across Maharashtra districts
+- Demographics and map views
+- Authentication pages for login and signup
+- Railway-ready deployment config
+
+## Tech Stack
+
+- Next.js
+- React
+- TypeScript
+- Prisma
+- PostgreSQL
+- Tailwind CSS
+- Railway deployment
+
+## Setup
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Create a local `.env` file from `.env.example`:
+
+```bash
+cp .env.example .env
+```
+
+Update the values in `.env`, especially:
+
+```bash
+DATABASE_URL=
+AUTH_SECRET=
+NEXTAUTH_SECRET=
+NEXTAUTH_URL=
+```
+
+`AUTH_SECRET` and `NEXTAUTH_SECRET` should be long random strings.
+
+## Development
+
+Run the local dev server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Database
 
-## Learn More
+Generate Prisma client:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npx prisma generate
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Run database migrations:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npx prisma migrate deploy
+```
 
-## Deploy on Vercel
+Sync crop and rainfall data through the app/API routes after the database is connected.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Useful Commands
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run lint
+npm run typecheck
+npm run build
+npm run start
+```
+
+Run all main checks:
+
+```bash
+npm run verify
+```
+
+## Deployment
+
+The app is configured for Railway with `railway.json`.
+
+Railway uses:
+
+- Build command: `npm run build`
+- Pre-deploy command: `npx prisma migrate deploy`
+- Start command: `npm run start`
+- Health check: `/health`
+
+Make sure Railway has these environment variables:
+
+```bash
+DATABASE_URL
+AUTH_SECRET
+NEXTAUTH_SECRET
+NEXTAUTH_URL
+NODE_ENV=production
+```
+
+## Notes
+
+- Do not commit `.env`.
+- `node_modules`, `.next`, and TypeScript build output are ignored.
+- The canonical district data lives in `src/data/districts.ts`.
+- Crop profiles live in `src/data/districtCropProfiles.ts`.
