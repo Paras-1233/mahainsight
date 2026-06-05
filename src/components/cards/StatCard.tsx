@@ -22,7 +22,7 @@ function StatCard({
 
   return (
 
-    <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 transition-all duration-300 hover:border-green-400/20 hover:bg-white/[0.07]">
+    <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl transition-all duration-300 hover:border-green-400/20 hover:bg-white/[0.07] sm:rounded-3xl sm:p-6">
 
       {/* Background Glow */}
       <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition duration-500" />
@@ -30,15 +30,15 @@ function StatCard({
       <div className="relative z-10">
 
         {/* Top */}
-        <div className="flex items-center justify-between mb-5">
+        <div className="mb-4 flex items-start justify-between gap-3 sm:mb-5">
 
-          <h3 className="text-slate-400 font-medium tracking-wide">
+          <h3 className="min-w-0 text-sm font-medium tracking-wide text-slate-400 sm:text-base">
 
             {title}
 
           </h3>
 
-          <div className="p-3 rounded-2xl bg-green-500/10 border border-green-500/10">
+          <div className="shrink-0 rounded-xl border border-green-500/10 bg-green-500/10 p-2.5 sm:rounded-2xl sm:p-3">
 
             <Icon
               className="text-green-400"
@@ -54,7 +54,7 @@ function StatCard({
 
           <div>
 
-            <h2 className="text-4xl font-bold text-white tracking-tight">
+            <h2 className="break-words text-2xl font-bold tracking-tight text-white sm:text-3xl xl:text-4xl">
 
               {value}
 

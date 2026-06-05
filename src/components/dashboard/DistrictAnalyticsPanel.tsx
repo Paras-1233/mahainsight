@@ -41,7 +41,7 @@ interface Props {
 
   return (
 
-    <div className="relative overflow-hidden rounded-3xl border border-white/8 bg-slate-950/60 backdrop-blur-xl p-5 text-white">
+    <div className="relative overflow-hidden rounded-2xl border border-white/8 bg-slate-950/60 p-4 text-white backdrop-blur-xl sm:rounded-3xl sm:p-5">
 
       {/* Single subtle glow */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/5 blur-3xl rounded-full pointer-events-none" />
@@ -49,11 +49,11 @@ interface Props {
       <div className="relative z-10">
 
         {/* Header */}
-        <div className="flex flex-col gap-5 mb-6">
+        <div className="mb-6 flex flex-col gap-5">
 
-          <div className="flex items-center justify-between gap-4 flex-wrap">
+          <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
 
-            <div>
+            <div className="min-w-0">
 
               <div className="flex items-center gap-2 mb-2">
 
@@ -67,7 +67,7 @@ interface Props {
 
               </div>
 
-              <h2 className="text-3xl font-bold tracking-tight">
+              <h2 className="break-words text-2xl font-bold tracking-tight sm:text-3xl">
 
                 {district}
 
@@ -77,7 +77,7 @@ interface Props {
 
             {/* Risk Badge */}
             {/* Risk Severity */}
-<div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 min-w-[240px]">
+<div className="w-full rounded-2xl border border-white/10 bg-white/[0.03] p-4 sm:min-w-[240px] sm:max-w-xs sm:flex-1">
 
   <div className="flex items-center justify-between mb-3">
 
@@ -133,7 +133,7 @@ interface Props {
         </div>
 
         {/* Analytics Grid */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
 
           <div className="rounded-2xl border border-white/8 bg-white/[0.03] p-4">
 
@@ -152,7 +152,7 @@ interface Props {
 
             </div>
 
-            <p className="text-2xl font-bold">
+            <p className="break-words text-xl font-bold sm:text-2xl">
 
               {rainfall}
 
@@ -177,7 +177,7 @@ interface Props {
 
             </div>
 
-            <p className="text-2xl font-bold">
+            <p className="break-words text-xl font-bold sm:text-2xl">
 
               {temperature}
 
@@ -202,7 +202,7 @@ interface Props {
 
             </div>
 
-           <p className="text-2xl font-bold">
+           <p className="break-words text-xl font-bold sm:text-2xl">
   {humidity}
 </p>
 
@@ -225,7 +225,7 @@ interface Props {
 
             </div>
 
-            <p className="text-2xl font-bold">
+            <p className="break-words text-xl font-bold sm:text-2xl">
   {windSpeed}
 </p>
 

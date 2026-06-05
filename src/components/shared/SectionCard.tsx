@@ -8,9 +8,9 @@ export default function SectionCard({
   children,
 }: SectionCardProps) {
   return (
-    <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6">
+    <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl sm:rounded-3xl sm:p-6">
 
-      <h2 className="text-xl font-semibold mb-6 text-white">
+      <h2 className="mb-5 text-lg font-semibold text-white sm:mb-6 sm:text-xl">
         {title}
       </h2>
 
