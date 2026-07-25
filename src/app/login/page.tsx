@@ -22,14 +22,18 @@ function LoginForm() {
     try {
       const response = await fetch("/api/auth/login", {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
 
-      const data = await response.json();
+      const data = await response.json().catch(() => ({}));
 
       if (response.ok) {
-        localStorage.setItem("mahainsight-user", JSON.stringify(data.user));
+        if (data?.user) {
+          localStorage.setItem("mahainsight-user", JSON.stringify(data.user));
+        }
+        window.dispatchEvent(new Event("mahainsight-auth"));
         router.push(searchParams.get("next") ?? "/dashboard");
         return;
       }

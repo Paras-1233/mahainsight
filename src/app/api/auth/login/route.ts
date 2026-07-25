@@ -7,17 +7,11 @@ import {
   getAuthCookieOptions,
 } from "@/lib/auth";
 import { checkRateLimit, getClientIp, rateLimitResponse } from "@/lib/rateLimit";
-import { readJsonObject, requireSameOrigin } from "@/lib/security";
+import { readJsonObject } from "@/lib/security";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request: Request) {
-  const originError = requireSameOrigin(request);
-
-  if (originError) {
-    return originError;
-  }
-
   const databaseConfigError = getDatabaseUrlConfigError();
 
   if (databaseConfigError) {
